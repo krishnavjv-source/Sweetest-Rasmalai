@@ -208,8 +208,10 @@ function showMessage(type){const b=document.getElementById("messageBox");b.inner
 function openPhoto(src){document.getElementById("bigPhoto").src=src;document.getElementById("photoModal").style.display="flex";}
 function closePhoto(e){if(!e||e.target.id==="photoModal"||e.target.className==="close")document.getElementById("photoModal").style.display="none";}
 function surprise(){
-for(let i=0;i<45;i++){const h=document.createElement("div");h.className="heart-rain";h.textContent=["❤️","💗","💕","💖","✨"][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+"vw";h.style.fontSize=16+Math.random()*22+"px";h.style.animationDuration=3+Math.random()*4+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),7500);}
-alert("Rasmalai ❤️\n\nChahe main kitne bhi words likhun, ek baat hamesha simple rahegi...\n\nTum mere liye hamesha special rahogi. ❤️ \n\n❤️ I LOVE YOU MERI SWEETEST RASMALAI ❤️ \n\nEK CHUMMA CHAHAT RAHAL 😘😘 \nAUR THODA ANKH MARNI THI MERI RASMALAI 😉😉 ");
+for(let i=0;i<65;i++){const h=document.createElement("div");h.className="heart-rain";h.textContent=["❤️","💗","💕","💖","💘","✨","🥰","😘"][Math.floor(Math.random()*8)];h.style.left=Math.random()*100+"vw";h.style.fontSize=16+Math.random()*24+"px";h.style.animationDuration=3+Math.random()*4+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),8000);}
+setTimeout(()=>{
+alert("Rasmalai ❤️\n\nAaj ek last baat dil se...\n\nTum meri zindagi ka woh khoobsurat ehsaas ho, jise main har din thoda aur pyaar karne laga hoon. 🥹❤️\n\nTumhari smile meri favourite notification hai, tumhari awaaz meri favourite feeling... aur tumhara saath meri favourite jagah. ❤️\n\nMain har baar tumhe choose karunga... har baar tumhe chahunga... aur har baar tumhare saath ek nayi beautiful memory banana chahunga. 💕\n\n❤️ I LOVE YOU MERI SWEETEST RASMALAI ❤️\n\nAb ek tight hug 🤗, ek pyaara sa chumma 😘 aur ek cute si aankh maarni 😉 to banti hai meri Faguniya ke liye. ❤️");
+},700);
 }
 
 function dontClick(){
