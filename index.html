@@ -35,6 +35,45 @@ footer{text-align:center;padding:30px;color:#9b7785;font-size:14px}
 .heart-rain{position:fixed;top:-30px;pointer-events:none;z-index:30;animation:fall linear forwards}
 @keyframes fall{to{transform:translateY(110vh) rotate(360deg);opacity:0}}
 @media(max-width:600px){section{padding:60px 16px}.countdown{grid-template-columns:repeat(2,1fr)}.story{padding:25px}.gallery img{height:280px}}
+
+/* SPECIAL FEATURES */
+.dont-click-section{text-align:center;padding:55px 20px}
+.dont-click-btn,.love-start-btn{display:inline-block;margin-top:22px;padding:16px 28px;border:0;border-radius:999px;background:#8d3157;color:#fff;font-size:17px;font-weight:700;cursor:pointer;box-shadow:0 10px 25px #8d315733;transition:.3s}
+.dont-click-btn:hover,.love-start-btn:hover{transform:scale(1.06)}
+.kiss-popup,.night-message,.love-cinematic{position:fixed;inset:0;display:none;align-items:center;justify-content:center;text-align:center;padding:20px}
+.kiss-popup{background:#260b168f;z-index:1000}
+.kiss-card,.night-card{background:#fff;border-radius:28px;padding:38px 25px;max-width:520px;width:100%;box-shadow:0 25px 70px #0005;animation:popSpecial .6s ease}
+.kiss-emoji,.night-moon{font-size:65px}
+.kiss-card h2{color:#8d3157}.kiss-card p,.night-card p{line-height:1.8;font-size:18px;color:#6d4a57}
+.kiss-close,.night-close{margin-top:20px;padding:12px 24px;border:0;border-radius:999px;background:#8d3157;color:#fff;cursor:pointer}
+.floating-kiss{position:fixed;bottom:-50px;pointer-events:none;z-index:1100;animation:kissFloat linear forwards}
+@keyframes kissFloat{to{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+@keyframes popSpecial{from{opacity:0;transform:scale(.65)}to{opacity:1;transform:scale(1)}}
+body.night-mode{background:#07050d!important;color:#fff!important;transition:.7s}
+body.night-mode section,body.night-mode .story,body.night-mode .card{background:transparent!important}
+body.night-mode .title,body.night-mode .subtitle,body.night-mode p,body.night-mode h2,body.night-mode h3{color:#fff0f7!important}
+.night-stars{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:9000}
+.night-star{position:absolute;color:#fff;animation:twinkle 2s infinite alternate}
+@keyframes twinkle{to{opacity:1;transform:scale(1.35)}}
+.night-message{background:#030108e8;z-index:9500}
+.night-card{background:#23142df7;color:#fff}
+.night-card h2{color:#ffd8e7}
+.night-card p{color:#fff0f7}
+.love-cinematic{background:#030106;color:#fff;z-index:12000;overflow:hidden}
+.love-content{max-width:850px;width:100%;position:relative;z-index:20}
+.love-typing{font-size:clamp(24px,4vw,43px);line-height:1.5;color:#ffe5ef}
+.love-big{font-size:clamp(48px,9vw,105px);font-weight:bold;color:#ff416c;text-shadow:0 0 10px #ff416c,0 0 30px #ff416c,0 0 70px #ff416c;animation:lovePulse 1.2s infinite}
+@keyframes lovePulse{50%{transform:scale(1.08)}}
+.love-story{font-size:clamp(20px,3vw,31px);line-height:1.8;color:#fff1f6}
+.love-question{font-size:clamp(28px,5vw,58px);color:#ffb6ce;text-shadow:0 0 30px #ff477e}
+.love-options{display:flex;justify-content:center;gap:20px;margin-top:35px;flex-wrap:wrap}
+.love-yes,.love-no{padding:15px 35px;border:0;border-radius:50px;font-size:20px;font-weight:bold;cursor:pointer}
+.love-yes{background:#ff3f78;color:#fff}.love-no{background:#333;color:#fff}
+.love-rain{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:10}
+.rain-item{position:absolute;top:-70px;animation:rainFall linear forwards}
+@keyframes rainFall{to{transform:translateY(110vh) rotate(360deg);opacity:.9}}
+.love-success{font-size:clamp(28px,5vw,60px);line-height:1.5;color:#ffd1df;text-shadow:0 0 30px #ff3f78;animation:popSpecial .8s ease}
+
 </style>
 </head>
 <body>
@@ -99,6 +138,45 @@ footer{text-align:center;padding:30px;color:#9b7785;font-size:14px}
 </div><div class="message-box" id="messageBox"></div>
 </section>
 
+
+<!-- SPECIAL FEATURES -->
+<section class="dont-click-section">
+<h2 class="title">🫣 Ek Important Warning</h2>
+<p class="subtitle">Rasmalai, is button ko bilkul mat dabana... 👀❤️</p>
+<button class="dont-click-btn" onclick="dontClick()">⚠️ Is Button Ko Mat Dabana!</button>
+</section>
+
+<section class="dont-click-section">
+<h2 class="title">🌙 Raat Wali Rasmalai</h2>
+<p class="subtitle">Raat mein ek special message tumhare liye... ❤️</p>
+<button class="dont-click-btn" onclick="nightMode()">🌙 Raat Wali Rasmalai</button>
+</section>
+
+<section class="love-proposal-section" style="text-align:center;padding:60px 20px">
+<h2 class="title">❤️ Ek Last Baat...</h2>
+<button class="love-start-btn" onclick="startLoveProposal()">💌 Dil Ki Baat Sunogi Meri Faguniya?</button>
+</section>
+
+<div class="kiss-popup" id="kissPopup"><div class="kiss-card">
+<div class="kiss-emoji">😘</div>
+<h2>Maine bola tha na mat dabana! 😂❤️</h2>
+<p>Maine bola tha is button ko mat dabana...<br><br>Phir bhi tumne daba diya! 😂<br><br>Ab tumhe mujhe ek <b>kiss deni padegi</b> 😘❤️</p>
+<button class="kiss-close" onclick="closeKiss()">Achha Baba 😘❤️</button>
+</div></div>
+
+<div class="night-message" id="nightMessage"><div class="night-card">
+<div class="night-moon">🌙</div>
+<h2>Raat Wali Rasmalai ❤️</h2>
+<p>Sab so rahe hain... 🌙<br><br>par mera favourite thought abhi bhi tum ho. ❤️<br><br>Isliye chumma dena start kro ab 😘❤️</p>
+<button class="night-close" onclick="closeNight()">🌙 Wapas Day Mode</button>
+</div></div>
+<div class="night-stars" id="nightStars"></div>
+
+<div class="love-cinematic" id="loveCinematic">
+<div class="love-content" id="loveContent"></div>
+<div class="love-rain" id="loveRain"></div>
+</div>
+
 <section class="final">
 <h2>Rasmalai... ❤️</h2>
 <p style="font-size:20px;line-height:1.8">Tum meri story ka sirf ek part nahi ho.<br>Tum meri favourite story ka sabse pyaara chapter ho. ❤️</p>
@@ -133,6 +211,40 @@ function surprise(){
 for(let i=0;i<45;i++){const h=document.createElement("div");h.className="heart-rain";h.textContent=["❤️","💗","💕","💖","✨"][Math.floor(Math.random()*5)];h.style.left=Math.random()*100+"vw";h.style.fontSize=16+Math.random()*22+"px";h.style.animationDuration=3+Math.random()*4+"s";document.body.appendChild(h);setTimeout(()=>h.remove(),7500);}
 alert("Rasmalai ❤️\n\nChahe main kitne bhi words likhun, ek baat hamesha simple rahegi...\n\nTum mere liye hamesha special rahogi. ❤️ \n\n❤️ I LOVE YOU MERI SWEETEST RASMALAI ❤️ \n\nEK CHUMMA CHAHAT RAHAL 😘😘 \nAUR THODA ANKH MARNI THI MERI RASMALAI 😉😉 ");
 }
+
+function dontClick(){
+ const popup=document.getElementById("kissPopup"); popup.style.display="flex";
+ const emojis=["😘","💋","❤️","💕","💖","🥰","💗"];
+ for(let i=0;i<35;i++){const x=document.createElement("div");x.className="floating-kiss";x.textContent=emojis[Math.floor(Math.random()*emojis.length)];x.style.left=Math.random()*100+"vw";x.style.fontSize=20+Math.random()*30+"px";x.style.animationDuration=2+Math.random()*2+"s";document.body.appendChild(x);setTimeout(()=>x.remove(),4500);}
+}
+function closeKiss(){document.getElementById("kissPopup").style.display="none";}
+function nightMode(){
+ document.body.classList.add("night-mode"); const stars=document.getElementById("nightStars");stars.innerHTML="";
+ for(let i=0;i<100;i++){const x=document.createElement("div");x.className="night-star";x.textContent="✦";x.style.left=Math.random()*100+"vw";x.style.top=Math.random()*100+"vh";x.style.fontSize=5+Math.random()*12+"px";x.style.animationDelay=Math.random()*2+"s";stars.appendChild(x);}
+ document.getElementById("nightMessage").style.display="flex";
+}
+function closeNight(){document.body.classList.remove("night-mode");document.getElementById("nightStars").innerHTML="";document.getElementById("nightMessage").style.display="none";}
+function startLoveProposal(){
+ const screen=document.getElementById("loveCinematic");screen.style.display="flex";document.getElementById("loveContent").innerHTML="";document.getElementById("loveRain").innerHTML="";setTimeout(proposalTyping,500);
+}
+function proposalTyping(){
+ const c=document.getElementById("loveContent"),text="Faguniya... ek baat dil se kehni hai... ❤️";c.innerHTML='<div class="love-typing"></div>';const t=c.querySelector(".love-typing");let i=0;
+ const timer=setInterval(()=>{t.textContent=text.substring(0,i++);if(i>text.length){clearInterval(timer);setTimeout(proposalILoveYou,1000);}},65);
+}
+function proposalILoveYou(){document.getElementById("loveContent").innerHTML='<div class="love-big">❤️ I LOVE YOU ❤️</div>';createHeartRain();setTimeout(proposalStory,4000);}
+function proposalStory(){document.getElementById("loveContent").innerHTML='<div class="love-story">Faguniya... ❤️<br><br>Pata nahi kab tum meri life ka itna beautiful part ban gayi... 🥹❤️<br><br>Bas itna pata hai...<br><br><b>ab meri favourite feeling tum ho. ❤️</b></div>';setTimeout(proposalQuestion,5500);}
+function proposalQuestion(){document.getElementById("loveContent").innerHTML='<div class="love-question">❤️ Kya tum meri Rasmalai banogi? ❤️<div class="love-options"><button class="love-yes" onclick="rasmalaiYes()">❤️ YES ❤️</button><button class="love-no" onclick="rasmalaiNo()">🙈 NO</button></div></div>';}
+function rasmalaiYes(){document.getElementById("loveContent").innerHTML='<div class="love-success">🎉😂❤️🎉<br><br>Badhai ho Rasmalai ji! ❤️<br><br>Aap Krishna ki Mehraru ban gayi hain! 😂❤️<br><br>🥰💋❤️</div>';createLaughRain();}
+function rasmalaiNo(){document.getElementById("loveContent").innerHTML='<div class="love-question">😭💔<br><br>Faguniya ji...<br><br>Ye option galti se dab gaya na? 😂<br><br><button class="love-yes" onclick="proposalQuestion()">😏 Ek Baar Aur Socho ❤️</button></div>';}
+function createHeartRain(){
+ const r=document.getElementById("loveRain");r.innerHTML="";const a=["❤️","💖","💕","💗","💓","💘","💝"];
+ for(let i=0;i<90;i++){const x=document.createElement("div");x.className="rain-item";x.textContent=a[Math.floor(Math.random()*a.length)];x.style.left=Math.random()*100+"%";x.style.fontSize=18+Math.random()*38+"px";x.style.animationDuration=2+Math.random()*4+"s";x.style.animationDelay=Math.random()*2+"s";r.appendChild(x);}
+}
+function createLaughRain(){
+ const r=document.getElementById("loveRain");r.innerHTML="";const a=["😂","🤣","😂","🤣","😆","😂","🤣"];
+ for(let i=0;i<120;i++){const x=document.createElement("div");x.className="rain-item";x.textContent=a[Math.floor(Math.random()*a.length)];x.style.left=Math.random()*100+"%";x.style.fontSize=20+Math.random()*40+"px";x.style.animationDuration=2+Math.random()*4+"s";x.style.animationDelay=Math.random()*2+"s";r.appendChild(x);}
+}
+
 </script>
 </body>
 </html>
